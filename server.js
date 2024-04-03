@@ -1,6 +1,7 @@
 // DEPENDENCIES ======================================
 const express = require('express');
 const path = require('path');
+const api = require('./routes/index.js');
 
 // DATA ==============================================
 
@@ -11,6 +12,7 @@ const port = process.env.PORT || 3000;
 // MIDDLEWARES =======================================
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/api', api);
 
 app.use(express.static('public'));
 
