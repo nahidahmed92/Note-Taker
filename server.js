@@ -9,6 +9,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // MIDDLEWARES =======================================
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // ROUTES ============================================
 app.get('/', (req, res) => {
@@ -17,5 +19,5 @@ app.get('/', (req, res) => {
 
 // START THE SERVER ==================================
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Example app listening on port http://localhost:${port}`);
 });
