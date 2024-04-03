@@ -12,10 +12,11 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static('public'));
+
 // ROUTES ============================================
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+// GET Route for homepage
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/public/index.html')));
 
 // START THE SERVER ==================================
 app.listen(port, () => {
