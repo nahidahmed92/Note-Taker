@@ -31,4 +31,26 @@ const readAndAppend = (content, file) => {
   });
 };
 
-module.exports = { readFromFile, writeToFile, readAndAppend };
+const deleteAndAppend = (id, file) => {
+  fs.readFile(file, 'utf8', (err, data) => {
+    if (err) {
+      return console.error(err);
+    } else {
+      let parsedData = JSON.parse(data);
+      // Find index of the note with the given ID
+      const indexOfId = parsedData.findIndex((pData) => pData.id === id);
+
+      if (indexOfId === -1) {
+        return console.error('Note not found');
+      }
+
+      // Remove the note from the array
+      parsedData.splice(indexOfId, 1);
+
+      // Write the updated array back to the file
+      writeToFile(file, parsedData);
+    }
+  });
+};
+
+module.exports = { readFromFile, writeToFile, readAndAppend, deleteAndAppend };
