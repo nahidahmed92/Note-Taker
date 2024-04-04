@@ -30,7 +30,12 @@ const readAndAppend = (content, file) => {
     }
   });
 };
-
+/**
+ *  Function to delete data from a given a file and append file.
+ *  @param {object} id The id is from the parameter and then its selected.
+ *  @param {string} file The path to the file you want to save to.
+ *  @returns {void} Nothing
+ */
 const deleteAndAppend = (id, file) => {
   fs.readFile(file, 'utf8', (err, data) => {
     if (err) {
@@ -40,13 +45,13 @@ const deleteAndAppend = (id, file) => {
       // Find index of the note with the given ID
       const indexOfId = parsedData.findIndex((pData) => pData.id === id);
 
+      // note selected does not have an ID
       if (indexOfId === -1) {
         return console.error('Note not found');
       }
 
       // Remove the note from the array
       parsedData.splice(indexOfId, 1);
-
       // Write the updated array back to the file
       writeToFile(file, parsedData);
     }
