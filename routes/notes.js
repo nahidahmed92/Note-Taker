@@ -1,5 +1,5 @@
 const notes = require('express').Router();
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, readAndAppend, deleteAndAppend } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
 const fs = require('fs');
 
@@ -27,36 +27,16 @@ notes.post('/', (req, res) => {
 });
 
 notes.delete('/:id', (req, res) => {
-  // ID is passed as a route parameter
+  // ID from route parameters
   const deleteId = req.params.id;
 
-  fs.readFile('./db/db.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ error: 'Failed to read data file.' });
-    }
-
-    let parsedData = JSON.parse(data);
-
-    // Find index of the note with the given ID
-    const indexOfId = parsedData.findIndex((note) => note.id === deleteId);
-
-    if (indexOfId === -1) {
-      return res.status(404).json({ error: 'Note not found' });
-    }
-
-    // Remove the note from the array
-    parsedData.splice(indexOfId, 1);
-
-    // Write the updated array back to the file
-    fs.writeFile('./db/db.json', JSON.stringify(parsedData), (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ error: 'Failed to update data file.' });
-      }
-      res.json(`Note with ID ${deleteId} deleted successfully`);
-    });
-  });
+  if (deleteId) {
+    deleteAndAppend(deleteId, './db/db.json');
+    // Send a 200 response after successful deletion
+    res.status(200).json({ message: `Note with ID ${deleteId} deleted successfully` });
+  } else {
+    res.error('Note not deleted');
+  }
 });
 
 module.exports = notes;
