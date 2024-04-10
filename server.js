@@ -7,7 +7,7 @@ const api = require('./routes/index.js');
 
 // APP/PORT ==========================================
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 // MIDDLEWARES =======================================
 app.use(express.json());
