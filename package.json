@@ -2,11 +2,11 @@
   "name": "note-taker",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node server",
-    "dev": "nodemon server.js"
+    "start": "node index",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
