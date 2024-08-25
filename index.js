@@ -27,3 +27,5 @@ app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/public/notes
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
 });
+
+module.exports = app;
