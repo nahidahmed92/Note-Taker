@@ -2,10 +2,11 @@ const notes = require('express').Router();
 const { readFromFile, readAndAppend, deleteAndAppend } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
 const fs = require('fs');
+const path = require('path');
 
 // GET Route for retrieving all notes
 notes.get('/', (req, res) => {
-  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+  readFromFile('./public/db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
 // POST Route for a new notes
