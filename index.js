@@ -34,7 +34,7 @@ app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/public/notes
 
 // START THE SERVER ==================================
 app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`);
+  console.log(`App listening on port http://localhost:${port}`);
 });
 
 module.exports = app;

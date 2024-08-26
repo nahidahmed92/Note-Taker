@@ -22,7 +22,7 @@ notes.post('/', (req, res) => {
       id: uuid(),
     };
 
-    readAndAppend(newNote, './db/db.json');
+    readAndAppend(newNote, path.join(__dirname, '../public/db/db.json'));
     res.json(`Notes added successfully`);
   } else {
     res.error('Error in adding notes');
@@ -35,7 +35,7 @@ notes.delete('/:id', (req, res) => {
   const deleteId = req.params.id;
 
   if (deleteId) {
-    deleteAndAppend(deleteId, './db/db.json');
+    deleteAndAppend(deleteId, path.join(__dirname, '../public/db/db.json'));
     // Send a 200 response after successful deletion
     res.status(200).json({ message: `Note with ID ${deleteId} deleted successfully` });
   } else {
