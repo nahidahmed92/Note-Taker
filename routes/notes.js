@@ -6,7 +6,9 @@ const path = require('path');
 
 // GET Route for retrieving all notes
 notes.get('/', (req, res) => {
-  readFromFile('./public/db/db.json').then((data) => res.json(JSON.parse(data)));
+  readFromFile(path.join(__dirname, '/public/db/db.json')).then((data) =>
+    res.json(JSON.parse(data))
+  );
 });
 
 // POST Route for a new notes
