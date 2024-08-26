@@ -34,15 +34,17 @@ const getNotes = () =>
     headers: {
       'Content-Type': 'application/json',
     },
+    mode: 'cors',
   });
 
 const saveNote = (note) =>
   fetch('https://api-note-taker.nahidahmed.com/api/notes', {
     method: 'POST',
+    body: JSON.stringify(note),
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(note),
+    mode: 'cors',
   });
 
 const deleteNote = (id) =>
@@ -51,6 +53,7 @@ const deleteNote = (id) =>
     headers: {
       'Content-Type': 'application/json',
     },
+    mode: 'cors',
   });
 
 const renderActiveNote = () => {
