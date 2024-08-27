@@ -29,31 +29,28 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  fetch('https://api-note-taker.nahidahmed.com/api/notes', {
+  fetch('/api/notes', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
-    mode: 'cors',
   });
 
 const saveNote = (note) =>
-  fetch('https://api-note-taker.nahidahmed.com/api/notes', {
+  fetch('/api/notes', {
     method: 'POST',
     body: JSON.stringify(note),
     headers: {
       'Content-Type': 'application/json',
     },
-    mode: 'cors',
   });
 
 const deleteNote = (id) =>
-  fetch(`https://api-note-taker.nahidahmed.com/api/notes/${id}`, {
+  fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
-    mode: 'cors',
   });
 
 const renderActiveNote = () => {
