@@ -1,7 +1,7 @@
 [
-    {
-        "title": "Test Title",
-        "text": "Test Text",
-        "id": "0m02"
-    }
+  {
+    "title": "Note Taker",
+    "text": "This a fully functional note application.",
+    "id": "0m02"
+  }
 ]
